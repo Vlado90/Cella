@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 8.5" name="CellaDbDataContext">
+  <DataContextMoniker Name="/CellaDbDataContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c3208da5-6913-4ed2-aaf4-36f8f1aa4ba0" absoluteBounds="0.75, 0.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/CellaDbDataContextDataContext/Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0eb6c2a1-3bd7-456b-9c99-4fe1970d312d" absoluteBounds="0.765, 1.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8fdc496-8de9-4588-810f-75b1c5b511a3" absoluteBounds="3.5, 0.875, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/CellaDbDataContextDataContext/Invoice" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a06f9a08-bf7c-416f-9ee9-17a976635608" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3fc72d59-fa57-446e-8581-f1fc25291bf7" absoluteBounds="6.75, 0.5, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/CellaDbDataContextDataContext/Item" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e1d8f2a8-3b74-4c38-8b0d-810655a33440" absoluteBounds="6.765, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.76044840494792); (3.5 : 1.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CellaDbDataContextDataContext/Customer/Customer_Invoice" />
+      <nodes>
+        <classShapeMoniker Id="c3208da5-6913-4ed2-aaf4-36f8f1aa4ba0" />
+        <classShapeMoniker Id="b8fdc496-8de9-4588-810f-75b1c5b511a3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bee437cd-ac2a-45af-8949-c68fb52fe31f" absoluteBounds="9.5, 0.5, 2, 3.1170068359375">
+      <DataClassMoniker Name="/CellaDbDataContextDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a53bb73c-066c-4d08-82b3-cbf64cce210f" absoluteBounds="9.515, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

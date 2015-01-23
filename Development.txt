@@ -1,0 +1,27 @@
+Legend:
+o Done
+- ToDo
+
+--------------------------------------------------
+
+1. etapa
+o vytvorenie základnej kostry databázy
+- funkèné základné operácie nad databázou (vkladanie a mazanie) 
+o prototyp GUI
+
+
+2. etapa
+- funkèná ponuka pridávania a odoberania tovaru 
+- základné funkcie v ponuke Uívatelia
+- funkèné profily a prihlasovanie do systému
+
+
+3. etapa
+- kompletné grafické rozhranie programu
+- funkèné profily a prihlasovanie do systému
+
+
+4. etapa
+- kompletná funkènos systému
+- funkèná tlaè
+- odlaïovanie chıb

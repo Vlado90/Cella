@@ -1,0 +1,5 @@
+C:\Users\Vladimír\documents\visual studio 2013\Projects\Cella2015Solution\CellaDataLayer\bin\Debug\CellaDataLayer.dll
+C:\Users\Vladimír\documents\visual studio 2013\Projects\Cella2015Solution\CellaDataLayer\bin\Debug\CellaDataLayer.pdb
+C:\Users\Vladimír\documents\visual studio 2013\Projects\Cella2015Solution\CellaDataLayer\obj\Debug\CellaDataLayer.csprojResolveAssemblyReference.cache
+C:\Users\Vladimír\documents\visual studio 2013\Projects\Cella2015Solution\CellaDataLayer\obj\Debug\CellaDataLayer.dll
+C:\Users\Vladimír\documents\visual studio 2013\Projects\Cella2015Solution\CellaDataLayer\obj\Debug\CellaDataLayer.pdb

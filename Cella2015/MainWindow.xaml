@@ -1,0 +1,238 @@
+﻿<Controls:Window x:Class="Cella2015.MainWindow"
+        xmlns:metro="http://schemas.codeplex.com/elysium/theme"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:Elysium.Controls;assembly=Elysium"
+        xmlns:params="http://schemas.codeplex.com/elysium/params"                 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Cella2015"
+        Title="Cella 2015" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        params:Design.Theme="Light"
+        params:Manager.Theme="Light"
+        BorderThickness="1">
+    <Grid>
+        <Grid Name="RibbonMain" Height="40" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="White">
+            <!-- Set columns to organize login and icons in ribbon -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition MaxWidth="340" />
+            </Grid.ColumnDefinitions>
+            
+            <Image Grid.Column="0" Name="imgHome" Width="30" Height="30" Margin="5" HorizontalAlignment="Left" Source="Pictures/icon_home.png" MouseUp="UIElement_OnMouseUp"></Image>
+            <WrapPanel Grid.Column="1" x:Name="pnlLogOut">
+                <TextBlock x:Name="txtActiveUserName" Text="" FontSize="20" VerticalAlignment="Bottom" Width="290" Height="40" TextAlignment="Right" />
+                <Image Width="40" Height="30" Margin="5" Name="imgLogout" Source="Pictures/logout.png" MouseUp="ImgLogout_OnMouseUp" />
+            </WrapPanel>
+        </Grid>
+        <TabControl Name="TabCtrlMain" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,40,0,0">
+            <!-- TabIndex 0 -->
+            <TabItem Header="Home" Name="tabHome" Height="40">
+                <Grid Margin="20">
+                    <Image Width="1150" Height="530" Margin="5" Name="imgUnderConstruction" Source="Pictures/underconstructionpage.gif" />
+                </Grid>
+            </TabItem>
+
+            <!-- TabIndex 1 -->
+            <TabItem Name="tabItems" Header="Items">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid Margin="20,20,0,20" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGray" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="100" Header="PLU"/>
+                            <DataGridTextColumn Width="*" Header="Name"/>
+                            <DataGridTextColumn Width="150" Header="Price (Unit/Package)" />
+                            <DataGridTextColumn Width="100" Header="Left"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <WrapPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+                        <Button x:Name="btnItemNew" Width="120" Height="30" VerticalAlignment="Top" Content="New Item" Margin="0,20,0,0" Click="BtnItemNew_OnClick"></Button>
+                        <Separator HorizontalAlignment="Stretch" Height="10" VerticalAlignment="Top" Width="120" Margin="0,10,0,0"/>
+                        <Label Content="Search string :" FontSize="12" Margin="0,10,0,0"/>
+                        <TextBox Height="30" Width="120" Margin="0,10,0,0" VerticalAlignment="Top" />
+                        <Button x:Name="btnItemSearch" Width="120" Height="30" VerticalAlignment="Top" Content="Search Items" Margin="0,15,0,0"></Button>
+                        <Button x:Name="btnItemEdit" Width="120" Height="30" VerticalAlignment="Top" Margin="0,15,0,0" Content="Edit Item"></Button>
+                        <Button x:Name="btnItemDelete" Width="120" Height="30" VerticalAlignment="Top" Margin="0,15,0,0" Content="Delete Item"></Button>
+                        <Button x:Name="btnItemImport" Width="120" Height="30" VerticalAlignment="Bottom" Margin="0,15,0,0" Content="Import Items"></Button>
+                    </WrapPanel>
+                    
+
+                </Grid>
+            </TabItem>
+
+            <!-- TabIndex 2 -->
+            <TabItem Name="tabInvoices" Header="Invoices" Height="40">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+                </Grid>
+            </TabItem>
+
+            <!-- TabIndex 3 -->
+            <TabItem Name="tabEmployees" Header="Employees" Height="40">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid Name="grdEmployees" Loaded="GrdEmployees_OnLoaded" AutoGenerateColumns="False" CanUserAddRows="False" Margin="20,20,0,20" ItemsSource="{Binding}" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGray"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Id}" Width="50" Header="ID"/>
+                            <DataGridTextColumn Binding="{Binding Path=Name}" Width="*" Header="Name and surname" />
+                            <DataGridTextColumn Binding="{Binding Path=Address}" Width="400" Header="Adress" />
+                            <DataGridTextColumn Binding="{Binding Path=BirthDate}" Width="100" Header="Birthdate"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <WrapPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+                        <Button x:Name="btnNewEmployee" VerticalAlignment="Top" Margin="0,20,0,0" Content="New Employee" Click="BtnNewEmployee_OnClick"></Button>
+                        <Separator HorizontalAlignment="Stretch" Height="10" VerticalAlignment="Top" Width="120" Margin="0,10,0,0"/>
+                        <Label Content="Search string :" FontSize="12" Margin="0,10,0,0"/>
+                        <TextBox x:Name="txtEmployeeSearchString" Height="30" Width="120" Margin="0,10,0,0" VerticalAlignment="Top" />
+                        <Button x:Name="btnEmployeeSearch" Width="120" Height="30" VerticalAlignment="Top" Content="Search Items" Margin="0,15,0,0"></Button>
+                        <Button x:Name="btnEmployeeEdit" Width="120" Height="30" VerticalAlignment="Top" Margin="0,15,0,0" Content="Edit Item"></Button>
+                        <Button x:Name="btnEmployeeDelete" Width="120" Height="30" VerticalAlignment="Top" Margin="0,15,0,0" Content="Delete Item"></Button>
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- TabIndex 4 -->
+            <TabItem Visibility="Collapsed" Name="tabNewItem" Header="New Item" Height="40">
+                <Grid x:Name="gridNewItem" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200px" />
+                        <ColumnDefinition Width="150px" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>        
+                        <RowDefinition Height="60px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="40px" />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="New Item" Grid.Column="0" Grid.Row="0" FontSize="28"/>
+                    
+                    <Label x:Name="lblNewItemName" FontSize="20" Content="Name:" Grid.Column="0" Grid.Row="1" />
+                    <TextBox x:Name="txtNewItemName" Height="25" Grid.Column="1" Grid.Row="1" />
+
+                    <Label x:Name="lblNewItemPlu" FontSize="20" Content="PLU:" Grid.Column="0" Grid.Row="2" />
+                    <TextBox x:Name="txtNewItemPlu" Height="25" Grid.Column="1" Grid.Row="2" />
+
+                    <Label x:Name="lblNewItemCategory" FontSize="20" Content="Category:" Grid.Column="0" Grid.Row="3" />
+                    <ComboBox x:Name="cmbNewItemCategory" 
+                              Grid.Column="1" 
+                              Grid.Row="3" 
+                              Height="30"
+                              ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Path=GetCategoriesDictionary}"
+                              SelectedValuePath="Value"
+                              DisplayMemberPath="Key"/>
+
+                    <Label x:Name="lblNewItemPricePerUnit" FontSize="20" Content="Price Per Unit:" Grid.Column="0" Grid.Row="4" />
+                    <TextBox x:Name="txtNewItemPricePerUnit" Height="25" Grid.Column="1" Grid.Row="4" />
+
+                    <Label x:Name="lblNewItemUnitsPerPackage" FontSize="20" Content="Units per package:" Grid.Column="0" Grid.Row="5" />
+                    <TextBox x:Name="txtNewItemUnitsPerPackage" Height="25" Grid.Column="1" Grid.Row="5" />
+
+                    <Label x:Name="lblNewItemPricePerPackage" FontSize="20" Content="Price per package:" Grid.Column="0" Grid.Row="6" />
+                    <Label x:Name="lblNewItemPricePerPackageValue" FontSize="20" Content="" Grid.Column="0" Grid.Row="6" />
+
+                    <Label x:Name="lblNewItemUnitsCriticalAmount" FontSize="20" Content="Critical amount:" Grid.Column="0" Grid.Row="7" />
+                    <TextBox x:Name="txtNewItemUnitsCriticalAmount" Height="25" Grid.Column="1" Grid.Row="7" />
+
+                    <Button x:Name="btnNewItemSave" Content="Submit" Grid.Column="1" Grid.Row="9" Click="BtnNewItemSave_OnClick" />
+                </Grid>
+            </TabItem>
+
+            <!-- TabIndex 5 -->
+            <TabItem Visibility="Collapsed" Name="tabNewInvoice" Header="New Invoice" Height="40">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+                    <Label Content="New Invoice" />
+                </Grid>
+            </TabItem>
+
+            <!-- TabIndex 6 -->
+            <TabItem Visibility="Collapsed" Name="tabNewEmployee" Header="New Invoice" Height="40">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50px" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <Label Content="New Employee" Grid.Column="0" Grid.Row="0" FontSize="28" />
+                    <Grid x:Name="grdNewEmployeeForm" ShowGridLines="False" Grid.Column="0" Grid.Row="1" Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="50px"/>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Column 0 -->
+                        <Label Grid.Row="0" Grid.Column="0" x:Name="lblNewEmployeeName" FontSize="20" Content="Name:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="lblNewEmployeeSurname" FontSize="20" Content="Surname:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="2" Grid.Column="0" x:Name="lblNewEmployeeStreet" FontSize="20" Content="Street:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="3" Grid.Column="0" x:Name="lblNewEmployeeNumber" FontSize="20" Content="Number:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="4" Grid.Column="0" x:Name="lblNewEmployeeCity" FontSize="20" Content="City:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="5" Grid.Column="0" x:Name="lblNewEmployeePostcode" FontSize="20" Content="Postcode:" VerticalAlignment="Bottom" />
+                        
+                        <!-- Column 1 -->
+                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtNewEmployeeName" Height="30" VerticalAlignment="Bottom" MaxLength="50" />
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtNewEmployeeSurname" Height="30" VerticalAlignment="Bottom" MaxLength="50" />
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtNewEmployeeStreet" Height="30" VerticalAlignment="Bottom" MaxLength="20" />
+                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtNewEmployeeNumber" Height="30" VerticalAlignment="Bottom" MaxLength="10" />
+                        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtNewEmployeeCity" Height="30" VerticalAlignment="Bottom" MaxLength="25" />
+                        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtNewEmployeePostcode" Height="30" VerticalAlignment="Bottom" MaxLength="10" />
+
+                        <!-- Column 2 - empty, creating space between columns -->
+                        <!-- Column 3 -->
+                        <Label Grid.Row="0" Grid.Column="3" x:Name="lblNewEmployeeGender" FontSize="20" Content="Gender:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="1" Grid.Column="3" x:Name="lblNewEmployeeBirthdate" FontSize="20" Content="Birthdate:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="5" Grid.Column="3" x:Name="lblNewEmployeeLogin" FontSize="20" Content="Login:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="6" Grid.Column="3" x:Name="lblNewEmployeePassword" FontSize="20" Content="Password:" VerticalAlignment="Bottom" />
+                        <Label Grid.Row="7" Grid.Column="3" x:Name="lblNewEmployeePasswordAgain" FontSize="20" Content="Password again:" VerticalAlignment="Bottom" />
+                        <Button Grid.Row="9" Grid.Column="3" x:Name="btnNewEmployeeSave" Width="150" HorizontalAlignment="Right" Content="Save" FontSize="16" Click="BtnNewEmployeeSave_OnClick" />
+                        
+                        <!-- Column 4 -->
+                        <ComboBox Grid.Row="0" Grid.Column="4" x:Name="cmbEmployeeGender" Height="30" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Path=GetGenderDictionary}" SelectedValuePath="Value" DisplayMemberPath="Key" VerticalAlignment="Bottom"/>
+                        <Calendar Grid.Row="1" Grid.Column="4" Grid.RowSpan="4" x:Name="calNewEmployeeBirthdate" />
+                        <TextBox Grid.Row="5" Grid.Column="4" x:Name="txtNewEmployeeLogin" Height="30" VerticalAlignment="Bottom" MaxLength="20" />
+                        <PasswordBox Grid.Row="6" Grid.Column="4" x:Name="pswNewEmployeePassword" Height="30" VerticalAlignment="Bottom" MaxLength="20" />
+                        <PasswordBox Grid.Row="7" Grid.Column="4" x:Name="pswNewEmployeePasswordAgain" Height="30" VerticalAlignment="Bottom" MaxLength="20" />
+                        <Button Grid.Row="9" Grid.Column="4" x:Name="btnNewEmployeeCancel" Width="150" HorizontalAlignment="Right" Content="Cancel" FontSize="16" Click="BtnNewEmployeeCancel_OnClick" />
+                    </Grid>
+                    
+                    <!-- EmployeeId, Name, Surname, Street, Number, City, PostCode, Gender, BirthDate, Login, Password -->
+                    
+                    
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
+    </Grid>
+</Controls:Window>
