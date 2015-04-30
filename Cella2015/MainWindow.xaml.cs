@@ -16,9 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
+using Cella.Model;
 using Cella2015.Helpers;
-
-using CellaDataLayer.Model;
 
 namespace Cella2015
 {
@@ -53,7 +52,7 @@ namespace Cella2015
 
         public List<EmployeeGridLine> GetEmployeeGridData()
         {
-            using (CellaDbDataContext dbContext = new CellaDbDataContext())
+            using (Cella.Model.CellaDbDataContext dbContext = new CellaDbDataContext())
             {
                 var list = new List<EmployeeGridLine>();
                 var employees = dbContext.Employees.ToList();

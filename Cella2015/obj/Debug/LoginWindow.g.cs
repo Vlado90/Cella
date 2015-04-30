@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Cella2015.Helpers;
 using Elysium.Controls;
 using Elysium.Parameters;
 using System;

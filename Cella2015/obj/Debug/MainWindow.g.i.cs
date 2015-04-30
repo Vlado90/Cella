@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 using Cella2015;
+using Cella2015.Helpers;
 using Elysium.Controls;
 using Elysium.Parameters;
 using System;
@@ -659,12 +660,6 @@ namespace Cella2015 {
             return;
             case 14:
             this.btnItemImport = ((System.Windows.Controls.Button)(target));
-            
-            #line 60 "..\..\MainWindow.xaml"
-            this.btnItemImport.Click += new System.Windows.RoutedEventHandler(this.BtnItemImport_OnClick);
-            
-            #line default
-            #line hidden
             return;
             case 15:
             this.tabInvoices = ((System.Windows.Controls.TabItem)(target));
