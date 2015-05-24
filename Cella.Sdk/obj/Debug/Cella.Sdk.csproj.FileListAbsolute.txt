@@ -1,0 +1,5 @@
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella.Sdk\bin\Debug\Cella.Sdk.dll
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella.Sdk\bin\Debug\Cella.Sdk.pdb
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella.Sdk\obj\Debug\Cella.Sdk.csprojResolveAssemblyReference.cache
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella.Sdk\obj\Debug\Cella.Sdk.dll
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella.Sdk\obj\Debug\Cella.Sdk.pdb

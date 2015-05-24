@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Cella.Model;
 using Cella2015.Helpers;
+using Cella.Sdk;
 
 namespace Cella2015
 {
@@ -28,7 +29,7 @@ namespace Cella2015
                 if (ValidateLoginInfo())
                 {
                     mainWindow.Show();
-                    mainWindow.txtActiveUserName.Text = App.activeEmployee.Name + " " + App.activeEmployee.Surname;
+                    mainWindow.txtActiveUserName.Text = string.Format("{0} {1}", App.activeEmployee.Name, App.activeEmployee.Surname);
                     this.Close();
                 }
             }
@@ -46,13 +47,13 @@ namespace Cella2015
             if (String.IsNullOrEmpty(txtLoginName.Text))
             {
                 result.IsValid = false;
-                result.Message = "Login can not be empty!";
+                result.Message = Constants.LOGIN_CAN_NOT_BE_EMPTY;
                 return result;
             }
             if (String.IsNullOrEmpty(txtLoginPassword.Password))
             {
                 result.IsValid = false;
-                result.Message = "Password can not be empty!";
+                result.Message = Constants.PASSWORD_CAN_NOT_BE_EMPTY;
                 return result;
             }
 
@@ -66,7 +67,7 @@ namespace Cella2015
             {
                 txtLoginName.BorderBrush = new SolidColorBrush(Colors.Red);
                 txtLoginPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-                ShowErrorLog("Enter login and password");
+                ShowErrorLog(Constants.ENTER_LOGIN_AND_PASSWORD);
 
                 return false;
             }
@@ -103,7 +104,7 @@ namespace Cella2015
             else
             {
                 txtLoginName.BorderBrush = new SolidColorBrush(Colors.Black);
-                ShowErrorLog("Login does not exist!");
+                ShowErrorLog(Constants.LOGIN_DOES_NOT_EXIST);
                 return false;
             }
 

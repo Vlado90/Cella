@@ -56,3 +56,5 @@ C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella
 C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella2015\obj\Debug\Cella2015.application
 C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella2015\obj\Debug\Cella2015.exe
 C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella2015\obj\Debug\Cella2015.pdb
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella2015\bin\Debug\Cella.Sdk.dll
+C:\Users\Vladimír\Documents\Visual Studio 2013\Projects\Cella2015Solution\Cella2015\bin\Debug\Cella.Sdk.pdb

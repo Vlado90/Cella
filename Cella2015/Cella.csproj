@@ -167,6 +167,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cella.Sdk\Cella.Sdk.csproj">
+      <Project>{7b8b982e-9837-477e-b8b5-ba2eed83b904}</Project>
+      <Name>Cella.Sdk</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CellaDataLayer\Cella.Model.csproj">
       <Project>{9bd0c760-329c-4840-a895-efb35e300fe1}</Project>
       <Name>Cella.Model</Name>

@@ -59,9 +59,15 @@ namespace Cella2015
 
                 foreach (Employee e in employees)
                 {
-                    string name = e.Name + " " + e.Surname;
-                    string address = e.Street + " " + e.Number + ", " + e.City;
-                    var listObject = new EmployeeGridLine() { Id = e.EmployeeId.ToString(), Name = name, Address = address, BirthDate = e.BirthDate };
+                    string name = string.Format("{0} {1}", e.Name, e.Surname);
+                    string address = string.Format("{0} {1}, {2}", e.Street, e.Number, e.City);
+                    var listObject = new EmployeeGridLine()
+                    {
+                        Id = e.EmployeeId.ToString(), 
+                        Name = name, 
+                        Address = address, 
+                        BirthDate = e.BirthDate
+                    };
                     list.Add(listObject);
                 }
                 return list;
@@ -155,10 +161,10 @@ namespace Cella2015
 
         private Validator VerifyNewItemForm()
         {
-            if(txtNewItemName.Text == string.Empty) return new Validator(false, "");
-            if (txtNewItemPlu.Text == string.Empty) return new Validator(false, "");
+            if(txtNewItemName.Text == string.Empty) return new Validator(false, string.Empty);
+            if (txtNewItemPlu.Text == string.Empty) return new Validator(false, string.Empty);
            
-            return new Validator(true, "");
+            return new Validator(true, string.Empty);
         }
 
         private void SaveNewItem()
@@ -215,16 +221,16 @@ namespace Cella2015
 
         private void BtnNewEmployeeCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            txtNewEmployeeName.Text = "";
-            txtNewEmployeeSurname.Text = "";
-            txtNewEmployeeStreet.Text = "";
-            txtNewEmployeeNumber.Text = "";
-            txtNewEmployeeCity.Text = "";
-            txtNewEmployeePostcode.Text = "";
+            txtNewEmployeeName.Text = string.Empty;
+            txtNewEmployeeSurname.Text = string.Empty;
+            txtNewEmployeeStreet.Text = string.Empty;
+            txtNewEmployeeNumber.Text = string.Empty;
+            txtNewEmployeeCity.Text = string.Empty;
+            txtNewEmployeePostcode.Text = string.Empty;
             cmbEmployeeGender.SelectedIndex = 0;
-            txtNewEmployeeLogin.Text = "";
-            pswNewEmployeePassword.Password = "";
-            pswNewEmployeePasswordAgain.Password = "";
+            txtNewEmployeeLogin.Text = string.Empty;
+            pswNewEmployeePassword.Password = string.Empty;
+            pswNewEmployeePasswordAgain.Password = string.Empty;
             TabCtrlMain.SelectedIndex = 3;
         }
 
@@ -257,16 +263,16 @@ namespace Cella2015
                 }
 
                 //clear New Employee form
-                txtNewEmployeeName.Text = "";
-                txtNewEmployeeSurname.Text = "";
-                txtNewEmployeeStreet.Text = "";
-                txtNewEmployeeNumber.Text = "";
-                txtNewEmployeeCity.Text = "";
-                txtNewEmployeePostcode.Text = "";
+                txtNewEmployeeName.Text = string.Empty;
+                txtNewEmployeeSurname.Text = string.Empty;
+                txtNewEmployeeStreet.Text = string.Empty;
+                txtNewEmployeeNumber.Text = string.Empty;
+                txtNewEmployeeCity.Text = string.Empty;
+                txtNewEmployeePostcode.Text = string.Empty;
                 cmbEmployeeGender.SelectedIndex = 0;
-                txtNewEmployeeLogin.Text = "";
-                pswNewEmployeePassword.Password = "";
-                pswNewEmployeePasswordAgain.Password = "";
+                txtNewEmployeeLogin.Text = string.Empty;
+                pswNewEmployeePassword.Password = string.Empty;
+                pswNewEmployeePasswordAgain.Password = string.Empty;
                 TabCtrlMain.SelectedIndex = 3;
             }
 
@@ -274,21 +280,21 @@ namespace Cella2015
 
         private Validator VerifyNewEmployeeForm()
         {
-            if (txtNewEmployeeName.Text == string.Empty ) return new Validator(false, "");
-            if (txtNewEmployeeSurname.Text == string.Empty) return new Validator(false, "");
-            if (txtNewEmployeeStreet.Text == string.Empty) return new Validator(false, "");
-            if (txtNewEmployeeNumber.Text == string.Empty) return new Validator(false, "");
-            if (txtNewEmployeeCity.Text == string.Empty) return new Validator(false, "");
-            if (txtNewEmployeePostcode.Text == string.Empty) return new Validator(false, "");
-            if (cmbEmployeeGender.SelectedValue.ToString() == string.Empty) return new Validator(false, "");
-            if (calNewEmployeeBirthdate.SelectedDate.Value.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")) return new Validator(false, "");
-            if (txtNewEmployeeLogin.Text == string.Empty) return new Validator(false, "");
-            if (pswNewEmployeePassword.Password == string.Empty) return new Validator(false, "");
-            if (pswNewEmployeePasswordAgain.Password == string.Empty) return new Validator(false, "");
+            if (txtNewEmployeeName.Text == string.Empty) return new Validator(false, string.Empty);
+            if (txtNewEmployeeSurname.Text == string.Empty) return new Validator(false, string.Empty);
+            if (txtNewEmployeeStreet.Text == string.Empty) return new Validator(false, string.Empty);
+            if (txtNewEmployeeNumber.Text == string.Empty) return new Validator(false, string.Empty);
+            if (txtNewEmployeeCity.Text == string.Empty) return new Validator(false, string.Empty);
+            if (txtNewEmployeePostcode.Text == string.Empty) return new Validator(false, string.Empty);
+            if (cmbEmployeeGender.SelectedValue.ToString() == string.Empty) return new Validator(false, string.Empty);
+            if (calNewEmployeeBirthdate.SelectedDate.Value.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")) return new Validator(false, string.Empty);
+            if (txtNewEmployeeLogin.Text == string.Empty) return new Validator(false, string.Empty);
+            if (pswNewEmployeePassword.Password == string.Empty) return new Validator(false, string.Empty);
+            if (pswNewEmployeePasswordAgain.Password == string.Empty) return new Validator(false, string.Empty);
 
-            if (pswNewEmployeePassword.Password != pswNewEmployeePasswordAgain.Password) return new Validator(false, "");
+            if (pswNewEmployeePassword.Password != pswNewEmployeePasswordAgain.Password) return new Validator(false, string.Empty);
 
-            return new Validator(true, "");
+            return new Validator(true, string.Empty);
         }
 
         private void GrdEmployees_OnLoaded(object sender, RoutedEventArgs e)
@@ -317,9 +323,8 @@ namespace Cella2015
 
             //hash the password and encode the parameters
             byte[] hash = PBKDF2(password, salt, PBKDF2_ITERATIONS, HASH_BYTE_SIZE);
-            return PBKDF2_ITERATIONS + ":" +
-                Convert.ToBase64String(salt) + ":" +
-                Convert.ToBase64String(hash);
+
+            return string.Format("{0}:{1}:{2}", PBKDF2_ITERATIONS, Convert.ToBase64String(salt), Convert.ToBase64String(hash));
         }
 
         public static bool ValidatePassword(string password, string correctHash)
